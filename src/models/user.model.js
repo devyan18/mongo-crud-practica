@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 
 const userSchema = new Schema({
   username: {
@@ -14,6 +14,25 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+
+  // tasks: [
+  //   {
+  //     text: {
+  //       type: String,
+  //       required: true,
+  //     },
+  //     done: {
+  //       type: Boolean,
+  //       default: false,
+  //     },
+  //   },
+  // ],
+  tasks: [
+    {
+      type: Types.ObjectId,
+      ref: "Task",
+    },
+  ],
 });
 
 export const UserModel = model("User", userSchema);
